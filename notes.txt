@@ -1,0 +1,218 @@
+1. Install pipenv
+	pip3 install pipenv
+2. Set up Virtual Environmnet
+	pipenv shell (Activate Virtual Env, Creates PipFile that stores the dependencies)
+3. Install Dependencies
+	pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy
+
+jsonify - take dict or array of dict and return json output
+
+
+4. Create Tables
+	Open python shell
+	from app import app, db
+	app.app_context().push()
+	db.create_all()
+
+5. Put debug = True for reload
+
+6. For postgresql install 
+
+	psycopg2
+	psycopg2-binary
+
+Flask-WTF for form validation
+passlib for hashing passwords
+
+pip freeze > requirements.txt
+
+
+instance = Math()
+dir(instance) shows all properties and methods of that class
+
+module/python file
+
+@app.route -> Decorator
+
+
+@app.errorhandler(404)
+def handle_404(e):
+    # handle all other routes here
+    return 'Not Found, but we HANDLED IT
+
+multiple routes pointing to same function is possible
+
+params
+"/product/<id>"
+def deleteProduct(id):
+
+query
+"/product"
+req.args.get("queryParam")
+If no value is passed shows "None"
+
+handle default value
+"/product"
+def getProduct(name = "Product 1"):
+req.args.get("name", name)
+
+If query param is not passed then default value is used
+
+
+default every parameter is considered as a string
+"/product/<int:num>"
+
+convert to string with -> str(num)
+
+.format() converts to string
+
+Jinga -> template engine, generate html dynamically on demand
+
+{{ variableName }}
+{% logic %}
+
+{% for movie in movies %}
+	<li> {{movie}} </li>
+{% endfor %}
+
+explicitly close the block of code using endfor as identation does not work here
+In python identation takes care of closing of the loop
+
+// Key, value
+dict = {"movie1": 2}
+for movie, duration in dict.items():
+
+{% if duration < 2 %}
+	Short
+{% elif duration> 2 and duration < 3 %}
+	Medium
+{% else %}
+	Long
+{% endif %}
+
+
+url_for
+generates url on the fly based on arguments passed
+
+href="../static/styles.css" NO
+href="{{ url_for('static', filename='css/styles.css') }}"
+folder, filename
+
+Filters:
+
+Use | within {{}} pipe to apply filter to a variable
+
+eg {{ name | capitalize | upper }} prints name with first letter CAPS
+pipe multiple filters is possible
+
+Macros - like functions - reusable code
+
+{% macro render_dict(dictionary) %}
+
+{% endmacro %}
+
+
+{% import 'macros.html' as myMacro %}
+
+{{ myMacro.render_dict(movies) }}
+
+
+SECRET_KEY is used by flask to secure the data inside the user sessions
+
+app.config.update()
+
+__init__
+special python method that is invoked whenever we create an instance of a class
+self is the instance that we are creating on any class
+
+__repr__ takes self as single parameter
+return string representation of a instance
+helps in formatting and produce readble output of data
+
+def __repr__(self):
+	return 'The id is {}, Name is {}'.format(self.id, self.name)
+
+db.create_all() creates all tables if they dont exist
+
+db.session.add_all([instance1, instance2, ...])
+db.session.commit()
+
+session object is like temporary space or memory where uncommitted transactions exist, its like a staging zone
+
+nullable = False (not null)
+index = True (speed up the retrieval)
+default = datetime.utcnow()
+unique = True
+db.DateTime
+
+Relationship
+
+1-many relationship
+(each publisher can have many books)
+pub_id = db.Column(db.Integer, db.ForeignKey('publication.id'))
+
+ 
+Book.query.all()
+Book.query.first()
+Book.query.filter_by(name='') gives query object
+Book.query.filter_by(name='').all() gives list
+
+Book.query.get(1) - primary key
+Book.query.limit(5).all()
+
+Book.query.order_by(Book.title).all()
+
+result = Publication.query.filter_by(name="Oracle").first()
+result.name
+Book.query.filter_by(pub_id = result.id).all()
+
+ 
+db.session.delete(Book) for deleting one
+Book.query.filter_by(pub_id=6).delete() for deleting one or many
+
+Contexts - 2 types 
+
+request context - created by flask when user submits a request and removed when the request is successfully server
+request and session object
+uses secret key to encrypt data across session
+
+application context -
+global var g 
+current_app
+
+app.app_context() 
+Flask gives us the ability to run multiple applications each with diff set of configs
+Hence we mention which application context to use.
+It tells to use current_app which is the current application context
+
+request decorators
+@app.before_request -> executes code before each and every request
+@app.before_first_request -> executes code only before the first request
+@app.after_request -> executes code after request is submitted but only if exceptions occur
+@app.teardown_request -> executes code after every request even if exceptions occur
+
+eg check if user is logged in or not before every request
+@app.before_request
+def check_login_status:
+
+Packaging - idea is to organize code into modules that does a specific task
+
+Blog and Shop Feature
+
+Blog Package
+	html, python, static files
+
+ECommerce Pakage
+	html, python, static files
+
+Package folder with __init__.py file 
+
+Blueprints
+a set of operation registered on an application and it simplifies how large applications work
+
+Generally defined in __init__.py files of package
+
+__name__ special python variable that defines the scope
+
+ 
+
