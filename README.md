@@ -7,7 +7,7 @@
 pipenv shell
 pipenv install
 ```
-### 2. Add your DATABASE URI in server.py
+### 2. Add your DATABASE URI in server.py and catalog.py
 
 ### 3. Run feedback application on localhost:5000
 ```
