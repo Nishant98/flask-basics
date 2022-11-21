@@ -1,14 +1,20 @@
-# Python Flask App
+# Flask Basics
 
 ## Installation
 
-```bash
-# Add your DATABASE URI in server.py
-
-# Install dependencies
+### 1. Install dependencies
+```
 pipenv shell
 pipenv install
+```
+### 2. Add your DATABASE URI in server.py
 
-# Serve on localhost:5000
+### 3. Run feedback application on localhost:5000
+```
 python server.py
+```
+
+### 4. Run Product CRUD APIs
+```
+python app.py
 ```
