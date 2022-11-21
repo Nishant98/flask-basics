@@ -69,3 +69,19 @@ textarea {
   outline: none;
   margin-top: 1rem;
 }
+
+table {
+  border-collapse: collapse;
+  width: 35%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 4px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
