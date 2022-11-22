@@ -215,4 +215,46 @@ Generally defined in __init__.py files of package
 __name__ special python variable that defines the scope
 
  
+Jinga Template Inheritence
+Many files might have same html content like a footer, sidebar etc
+Inefficient to copy it to all the pages
 
+layout.html
+
+Organize code into blocks, add repetitive html in block and resuse whenever needed 
+{% block head %}
+{% endblock %}
+
+
+{{ form.hidden_tag() }}
+Flask WT Form security feature, helps protect from CSRF attacks
+without this key it is almost impossible to hack the Flask Application
+and hence this is hidden field
+
+request.form has the form fields
+it also has csrf_token because of the hidden_tag in the form
+
+class methods belong to a class but are not associated with any class instance
+directly called, no need of instance
+
+class User:
+@classmethod
+def create_user(cls, user)
+cls is class, no self here
+
+// called directly
+User.create_user()
+
+form.validate_on_submit()
+checks if it is a POST request and if the data entered is valid
+
+get_flashed_messages() stores all the flash messages that we need to show in application
+
+quick_form() marco to render the form in single line and hence avoid writing html
+
+UserMixin()
+works with models
+has is_autheticated, is_active, is_anonymous etc
+
+current_user.is_authenticated
+current_user.user_name
