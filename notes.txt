@@ -608,3 +608,43 @@ Integers, Boolean, String, Tuples are immutable
 List, ... in python is mutable
 
 Do not use default parameter values that are mutable
+
+JSON is a string of long text and not a python dict
+hence use JSON.stringify(dict) to convert dict to JSON
+
+flask returns a JSON while returning response
+
+request.get_json()
+
+return new_store, 201
+
+Flask-Smorest - for APIs
+
+>>> d1 = {"a": 0, "b": 1, "c": 2}
+>>> d2 = {"c": 20, "d": 30}
+
+>>> # Merge, | 
+>>> d1 | d2
+{"a": 0, "b": 1, "c": 20, "d": 30}
+>>> d1 
+{"a": 0, "b": 1, "c": 2}
+
+>>> # Update, |=
+>>> d1 |= d2
+>>> d1 
+{"a": 0, "b": 1, "c": 20, "d": 30}
+
+Marshmallow -> Validations at schema lvl
+
+dump_only=True // cannot set that field from API like ID
+
+store = db.relationship("StoreModel", back_populates="items")
+this will add store field in the items table so that we can access store fields from the item obj itself
+
+items = db.relationship("ItemModel", back_populates="store", lazy="dynamic")
+
+lazy dyanmic tells that items wont be fetched from DB until we tell it to
+
+ItemModel.query.get_or_404(id)
+if no item, automatically aborts
+
