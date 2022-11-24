@@ -544,3 +544,67 @@ def avg(nums: list) -> float:
 nums is a list and fun return float
 from typing import List, Set, Tuple
 
+__name__ is spl var that changes based on which file we are in
+
+returns __main__ if executed from same file
+if imported and executed from another module then returns filename
+
+File we run is __main__, others are named based on the path
+
+Erros in Python:
+
+raise ZeroDivisionError("")
+
+try:
+	divide(10,0)
+except ZeroDivisionError as e:
+	print(e)
+except...
+else: // runs if try succeeds
+finally: // runs always
+
+TypeError
+ValueError
+RuntimeError
+
+Custom Error Class:
+
+class TooManyPagesReadError(ValueError):
+	pass
+
+raise TooManyPagesReadError("Error Msg")
+
+First Class Functions:
+functions passed as arguments, return function etc
+
+Decorators:
+allows to Modify functions
+
+user = {"name": "John", "access_level": "guest"}
+
+def getAdminPassword:
+	return 1234;
+
+def make_secure(func):
+	def secure_func():
+		if user["access_level"] == "Admin":
+			return func()
+	return secure_func
+
+getAdminPassword = make_secure(getAdminPassword)
+print(getAdminPassword())
+
+@ in decorator
+
+equivalent to  above
+
+@make_secure
+def getAdminPassword:
+	return 1234;
+
+passes func in decorator and gets the resultant func
+
+Integers, Boolean, String, Tuples are immutable
+List, ... in python is mutable
+
+Do not use default parameter values that are mutable
