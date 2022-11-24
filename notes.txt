@@ -258,3 +258,289 @@ has is_autheticated, is_active, is_anonymous etc
 
 current_user.is_authenticated
 current_user.user_name
+
+Python Basics
+
+f string
+f"Hello {name}"
+
+Template string with format
+"Hello {}".format(name)
+
+User Input
+name = input("Enter name")
+
+input always gives a string
+height = int(input())
+
+Format till 2 decimals
+f"{height:.2f}"
+
+x = 4863.4343091          # example float to format
+
+print(f"{x:.6}")          # f-string version
+print("{:.6}".format(x))  # format method version
+
+List, Tuples, Sets
+list = [1,2,4]
+
+cant modify a tuple, cant add or remove elements from tuple
+tuple = (1,2,3)
+set = {1,2,3} add remove is possible but no duplicates 
+list and tuple guarantees order, Set does not maintain order
+
+access list and tuple using subscript notation
+list[0]
+tuple[0]
+
+list.append(5) adds at last position
+list.remove("Bob")
+
+set.add("Smith")
+
+empty set => set()
+
+set1 = {1,2,4}
+set2={2}
+
+set1.difference(set2)
+{1, 4}
+removes set2 elements from set1
+
+set1.union(set2)
+{1,2,4}
+
+set1.intersection(set2)
+
+tuple with single value
+my_tuple = (5) is wrong, treated as expression
+my_tuple = (5, ) or 15, works
+
+
+Boolean True False
+
+Tuple and list same behavior 
+
+list1 = [1,2]
+list2 = [2,1]
+list1 == list2 False
+list1 is list2 False
+
+list1 = [1,2]
+list2 = [1,2]
+list1 == list2 True
+
+set1 = {1,2}
+set2 = {2,1}
+set1 == set2 True
+set1 is set2 False
+
+if: 
+elif:
+else:
+
+in keyword - check for membership, works for list, tuple, set, strings
+lst = [1,2,3]
+3 in lst - True
+
+Loops
+for item in items:
+while condition:
+for item in range(4): runs from 0,1,2,3
+
+List Comprehensions
+usually used in single line
+new list is created
+
+numbers = [1,2,3]
+double = []
+for number in numbers:
+	double.append(numbber * 2)
+
+Better Way
+doubled = [number*2 for number in numbers]
+
+starts_with_s = [friend for friend in friends if friend.startswith("S")]
+
+
+Dictionary
+
+d = {"name": "X", "age": 25}
+keys can be string, int or any other hashable types
+d["name"]
+
+for key, value in dict.items():
+for key in dict:
+dict.values()
+
+Destructuring variables
+x, y = 5, 11
+x, y = [5, 11]
+x, y = (5, 11)
+x, y = {5, 11}
+
+head, *tail = [1,2,3,4]
+1 [2,3,4]
+
+*head, tail = [1,2,3,4]
+[1,2,3] 4
+
+def functionName():
+
+def greet(name, surname):
+
+Positional Arguments
+greet("John", "Doe")
+
+Keyword or Named Arguments
+greet(surname="Doe", name="John")
+
+Cannot put positional argument after named argument
+i.e
+add(x=5, 10)
+add(10, y=20) is allowed
+
+None - no value, missing or undeclared value
+Functions return None by default
+
+Lambda Functions:
+
+Does not have a name and only used to return values
+
+operate on i/p and return o/p, never used to perform actions
+
+add = lambda x, y: x + y
+print(add(5,10))
+
+print(lambda x, y: x + y)(5,7)
+
+doubled = lambda x: x*x
+ 
+def double(x):
+	return x*2
+
+seq = [1,2,3]
+douled = [double(x) for x in seq]
+ OR
+doubled = map(double, seq)
+for every item in seq, call double function
+
+List Comprehension preferred
+
+map function returns map object hence typecast it to list(map())
+
+Dictionary Comprehensions
+users = [(0, "Bob", "password"), (1, "John", "secret")]
+
+user_map = {user[1]: user for user in users}
+output
+{'Bob': (), 'John': ()}
+
+Unpacking Fun Arguments:
+
+def multiply(*args):
+	print(args) // (1,2,3)
+args is the var to collect the arguments
+the function has set of arguments that would be collected in args as a tuple
+
+multiply(1,2,3)
+
+def add(x,y):
+	return x+y
+
+nums = [1,2]
+add(*nums)
+destructures nums and passes it into x and y
+
+nums = {"x": 15, "y": 10}
+add(**nums)
+passes each key as a named argument
+
+Unpacking keyword arguments:
+
+def named(**kwargs):
+	print(kwargs) // {'name': "John", "age": 12}
+
+named(name="John", age=12)
+
+** for dictionary pack and unpack
+* for tuple pack and unpack
+
+* positional args as tuple
+** named args as dict
+
+Object Oriented:
+__init__ method takes self, is constructor
+executed when instance is created
+
+student = Student()
+print(Student.average(student))
+is same as
+print(student.average())
+
+student is passed as self
+
+__ are magic or spl methods
+Student() is same as Student.__init__()
+
+gets called when we want to convert obj to string eg print or str(object)
+print(student) // hello, turns obj into string
+def __str__(self):
+	return "hello"
+ 
+
+print out unambigious representation of obj
+def __repr__(self):
+
+@classmethod and @staticmethod
+
+All functions inside the class that use the object self as first parameter are called instance methods
+
+test = TestClass()
+test.instance_method()
+OR
+TestClass.instance_method(test)
+
+@classmethod
+def class_method(cls):
+	cls is the class itself
+
+TestClass.class_method() TestClass is passed as arg internally
+
+@staticmethod
+def static_method():
+
+dont get self or cls as arg
+func that does not use class or instance then use static
+ClassTest.static_method()
+
+instance -> product action that uses data in obj
+class -> used as factories, to create objects
+
+Inheritence
+allows a class to take prop and methods from another class
+ 
+Printer inherts Device
+class Printer(Device):
+	def __init__(self):
+		super().__init__()
+
+every class inherits the Pythons Object Class
+
+Class Composition: Counterpart to Inheritence to build class that uses other classes
+
+Book cannot inherit Bookshelf
+Bookshelf contains many Books
+
+book1 = Book()
+book2 = Book()
+shelf = Bookshelf(book1, book2)
+
+Type Hinting
+
+def avg(nums: list) -> float:
+	return
+
+nums is a list and fun return float
+from typing import List, Set, Tuple
+
