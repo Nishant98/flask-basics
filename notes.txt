@@ -648,3 +648,7 @@ lazy dyanmic tells that items wont be fetched from DB until we tell it to
 ItemModel.query.get_or_404(id)
 if no item, automatically aborts
 
+load_only = True
+dont send to client
+
+
