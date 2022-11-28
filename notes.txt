@@ -651,4 +651,31 @@ if no item, automatically aborts
 load_only = True
 dont send to client
 
+Pytest
 
+uses python assert
+
+test Fixtures -> A test fixture represents the preparation needed to perform one or more tests, and any associated cleanup actions. This may involve, for example, creating temporary or proxy databases, directories, or starting a server process.
+
+test at the beginning of fun name
+eg test_CreateUser()
+
+similar tests can be grouped into same module or class
+
+pytest -v
+
+Classes with test should have "Test" in beginning of the name and not have __init__ method.
+
+filenames of test modules should start or end with test
+
+test_eg.py eg_test.py
+
+setup and teardown functions 
+XUnit Style executed before and after module, function, class, method
+
+pytest fixtures
+@pytest.fixture() decorator
+
+Test doubles are objects that are used in unit test as replacements to real system collaborators
+
+unittest.mock library
